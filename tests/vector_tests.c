@@ -51,7 +51,8 @@ void test_resize(void) {
     free_vector(v);
     printf("✔ test_resize passed\n");
 }
-void test_popp(void){
+//тест метода pop
+void test_pop(void){
     Vector *v = vector_create(sizeof(int),10);
     for(int i = 0;i < 10;i++){
         append(v,&i);
@@ -63,12 +64,25 @@ void test_popp(void){
     free_vector(v);
     printf("✔ test_pop passed\n");
 }
+//тест метода get
+void test_get(void){
+    Vector *v = vector_create(sizeof(int), 20);
+    for(int i = 0;i < 20;i++){
+        append(v,&i);
+    }
+    int *value = get(v,19);
+    assert(*value == 19);
+    free_vector(v);
+    printf("✔ test_get passed\n");
+}
+
 
 int main(void) {
     test_create_vector();
     test_append_ints();
     test_resize();
-    test_popp();
+    test_pop();
+    test_get();
 
     printf("\n✅ ALL TESTS PASSED\n");
     return 0;

@@ -25,3 +25,6 @@ void append(Vector *v, const void *value);
 
 //метод удаление элемента из конца вектора
 void pop(Vector *v,void *back_element);
+
+//метод get возвращающий указатель на элемент по индексу
+void* get(Vector *v, size_t index);

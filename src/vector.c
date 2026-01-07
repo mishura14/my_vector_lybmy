@@ -66,3 +66,21 @@ void pop(Vector *v,void *back_element)
     }
 
 }
+//метод get возвращающий указатель на элемент по индексу
+void* get(Vector *v, size_t index)
+{
+    if(index >= v->length){
+        return NULL;
+    }
+    return (char*)v->data + index * v->element_size;
+}
+
+// метод set перезаписывающий элемент по индексу
+
+// метод erase удалающий элемент по индексу
+
+// метод clear очищающий элементы вектора но не удалая его самово
+
+// метод reverse увеличивающий capacity вектора
+
+// insert вставка по индексу
