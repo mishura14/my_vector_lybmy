@@ -9,7 +9,7 @@ typedef struct{
     void *data;
     size_t capacity;
     size_t element_size;
-    size_t size;
+    size_t length;
 
 }Vector;
 //метод создания вектора
@@ -24,7 +24,7 @@ Vector *vector_create(size_t element_size, size_t capacity)
     }
     v->capacity = capacity;
     v->element_size = element_size;
-    v->size = 0;
+    v->length = 0;
     return v;
 };
 //метод очистки вектора из памяти
@@ -34,3 +34,23 @@ void free_vector(Vector *v)
     free(v);
 }
 //метод добавление элеметов в вектор
+void append(Vector *v, const void *value)
+{
+    if (v->length >= v->capacity) {
+        v->capacity = (v->capacity == 0) ? 2 : v->capacity * 2;
+
+        v->data = realloc(v->data, v->capacity * v->element_size);
+        if (!v->data) {
+            perror("realloc");
+            exit(1);
+        }
+    }
+
+    memcpy(
+        (char *)v->data + v->length * v->element_size,
+        value,
+        v->element_size
+    );
+
+    v->length++;
+}
