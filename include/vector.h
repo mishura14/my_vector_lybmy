@@ -28,3 +28,6 @@ void pop(Vector *v,void *back_element);
 
 //метод get возвращающий указатель на элемент по индексу
 void* get(Vector *v, size_t index);
+
+// метод set перезаписывающий элемент по индексу
+void set(Vector *v, size_t index,const void *value);

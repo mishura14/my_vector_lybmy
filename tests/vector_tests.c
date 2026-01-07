@@ -75,6 +75,18 @@ void test_get(void){
     free_vector(v);
     printf("✔ test_get passed\n");
 }
+//тест метода set
+void test_set(void){
+    Vector *v = vector_create(sizeof(int), 10);
+    for(int i = 0;i < 10;i++){
+        append(v,&i);
+    }
+    int value = 1000;
+    set(v,0,&value);
+    int *value_set = get(v,0);
+    assert(*value_set == 1000);
+    printf("✔ test_set passed\n");
+}
 
 
 int main(void) {
@@ -83,6 +95,7 @@ int main(void) {
     test_resize();
     test_pop();
     test_get();
+    test_set();
 
     printf("\n✅ ALL TESTS PASSED\n");
     return 0;

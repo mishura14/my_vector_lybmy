@@ -76,6 +76,13 @@ void* get(Vector *v, size_t index)
 }
 
 // метод set перезаписывающий элемент по индексу
+void set(Vector *v, size_t index,const void *value)
+{
+    if(index >= v->length){
+        return;
+    }
+    memcpy((char *)v->data + index * v->element_size,value,v->element_size);
+}
 
 // метод erase удалающий элемент по индексу
 
